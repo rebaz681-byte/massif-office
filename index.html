@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ku" dir="rtl">
+<html lang="ku" dir="rtl" id="htmlRoot">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سیستەمی کارگێڕیی ئۆفیس مەسیف</title>
+    <title id="pageTitle">سیستەمی بەڕێوەبردنی ئۆفیس مەسیف</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body.dark-mode { background-color: #121212; color: #f1f1f1; }
@@ -58,7 +58,7 @@
             body.print-staff-mode #staffModal .modal-content { margin: 0 !important; padding: 0 !important; width: 100% !important; border: none !important; background: transparent !important; color: black !important; }
 
             .staff-note-item { background: transparent !important; color: black !important; border: 1px solid #000 !important; page-break-inside: avoid; margin-bottom: 10px !important; }
-            table { width: 100% !important; border-collapse: collapse !important; page-break-inside: auto; margin-bottom: 20px; direction: rtl; }
+            table { width: 100% !important; border-collapse: collapse !important; page-break-inside: auto; margin-bottom: 20px; }
             tr { page-break-inside: avoid; page-break-after: auto; }
             th, td { border: 1px solid #000 !important; padding: 8px !important; color: black !important; text-align: center; word-wrap: break-word; }
             th { background-color: #e0e0e0 !important; -webkit-print-color-adjust: exact; color-adjust: exact; font-weight: bold; }
@@ -70,7 +70,7 @@
     <div id="loginModal" class="modal">
         <div class="modal-content" style="max-width: 320px; text-align: center;">
             <span class="close-btn no-print" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
-            <h2>چوونەژوورەوە</h2>
+            <h2 id="txtLoginTitle">چوونەژوورەوە</h2>
             <input type="email" id="emailInput" placeholder="ئیمەیڵ" style="width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; font-family: inherit;">
             <input type="password" id="passwordInput" placeholder="پاسوۆرد" style="width: 100%; padding: 10px; margin-bottom: 15px; box-sizing: border-box; font-family: inherit;">
             <button id="submitLogin" style="width: 100%; padding: 10px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-family: inherit; font-size: 16px;">لۆگین</button>
@@ -91,22 +91,23 @@
         <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
             <img src="Xawan -PNG.png" alt="Xawan Logo" class="site-logo" style="height: 80px; transform: scale(2.0); margin-left: 20px; margin-right: 25px; object-fit: contain;">
             
-            <h1 style="margin: 0; font-size: 24px;">سیستەمی بەڕێوەبردنی ئۆفیس مەسیف</h1>
-            <span style="font-size: 13px; border: 1px solid #ff7675; background-color: rgba(255, 118, 117, 0.15); padding: 5px 12px; border-radius: 6px; color: #ffeaa7; font-weight: bold;">سەرپەرشتیار ڕێباز ئەحمەد</span>
+            <h1 id="txtHeaderTitle" style="margin: 0; font-size: 24px;">سیستەمی بەڕێوەبردنی ئۆفیس مەسیف</h1>
+            <span id="txtSupervisor" style="font-size: 13px; border: 1px solid #ff7675; background-color: rgba(255, 118, 117, 0.15); padding: 5px 12px; border-radius: 6px; color: #ffeaa7; font-weight: bold;">سەرپەرشتیار ڕێباز ئەحمەد</span>
         </div>
         <div style="display: flex; gap: 10px; align-items: center;">
+            <button id="langToggle" class="no-print" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.4); padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 14px; font-weight: bold; transition: 0.3s;">EN</button>
             <button id="themeToggle" class="no-print" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.4); padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 18px; transition: 0.3s;">🌙</button>
             <button id="loginBtn" class="no-print" style="background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; transition: 0.3s; font-weight: bold;">چوونەژوورەوە</button>
         </div>
     </header>
 
     <div id="adminPanel" class="admin-only no-print" style="display: none; background: white; padding: 15px; margin: 20px; border-radius: 8px; text-align: center;">
-        <h3>زیادکردنی کارمەندی نوێ</h3>
+        <h3 id="txtAddStaffTitle">زیادکردنی کارمەندی نوێ</h3>
         <input type="text" id="newName" placeholder="ناوی کارمەند" style="padding: 8px; margin: 5px;">
         <select id="newPosition" style="padding: 8px; margin: 5px;">
-            <option value="سکانەر">سکانەر</option>
-            <option value="تەکنیکاڵ سەپۆرتەر">تەکنیکاڵ سەپۆرتەر</option>
-            <option value="سەپۆرتەر">سەپۆرتەر</option>
+            <option value="سکانەر" id="optScanner">سکانەر</option>
+            <option value="تەکنیکاڵ سەپۆرتەر" id="optTech">تەکنیکاڵ سەپۆرتەر</option>
+            <option value="سەپۆرتەر" id="optSupporter">سەپۆرتەر</option>
         </select>
         <button id="addStaffBtn" style="padding: 8px 15px; background: #2ecc71; color: white; border: none; border-radius: 5px; cursor: pointer;">زیادکردن</button>
     </div>
@@ -120,7 +121,7 @@
 
         <div id="financePanel" style="display: none; background: white; margin: 20px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
             <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #9b59b6; padding-bottom: 10px; margin-bottom: 15px;">
-                <h2 style="color: #9b59b6; margin: 0;">بەشی دارایی و وەصڵەکان</h2>
+                <h2 id="txtFinanceTitle" style="color: #9b59b6; margin: 0;">بەشی دارایی و وەصڵەکان</h2>
                 <button onclick="printFinanceSection()" style="background: #34495e; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">🖨️ پرینت / PDF</button>
             </div>
             
@@ -128,7 +129,7 @@
             <div class="print-only" style="font-size: 14px; margin-bottom: 20px; font-weight: normal;">سەرپەرشتیار ڕێباز ئەحمەد</div>
             
             <div id="financeAddForm" class="no-print admin-only" style="display: none; background: #fdfbf7; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #ddd;">
-                <h3 style="margin-top: 0;">زیادکردنی وەصڵی نوێ</h3>
+                <h3 id="txtAddReceipt" style="margin-top: 0;">زیادکردنی وەصڵی نوێ</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                     <input type="text" id="finStore" placeholder="ناوی فرۆشگا / شوێن" style="flex: 1; min-width: 150px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                     <input type="text" id="finItem" placeholder="ناوی کاڵا بە گشتی" style="flex: 1; min-width: 150px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
@@ -136,7 +137,7 @@
                     <input type="number" id="finPrice" placeholder="نرخ (بە دینار)" style="flex: 1; min-width: 100px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                     <input type="text" id="finOffice" placeholder="ناوی ئۆفیس" style="flex: 1; min-width: 100px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                     <div style="flex: 1; min-width: 200px; display: flex; align-items: center; gap: 5px;">
-                        <span style="font-size: 12px; color: #555;">وێنە:</span>
+                        <span id="txtImageLabel" style="font-size: 12px; color: #555;">وێنە:</span>
                         <input type="file" id="finImage" accept="image/*" style="width: 100%; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">
                     </div>
                     <button id="addFinanceBtn" style="background: #2ecc71; color: white; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; min-width: 120px;">پاشەکەوتکردن</button>
@@ -147,13 +148,13 @@
                 <table id="financeTable" style="width: 100%; border-collapse: collapse; text-align: right; font-size: 14px;">
                     <thead>
                         <tr style="background-color: #f2f2f2;">
-                            <th style="border: 1px solid #ddd; padding: 10px;">ژ.</th>
-                            <th style="border: 1px solid #ddd; padding: 10px;">ناوی فرۆشگا / شوێن</th>
-                            <th style="border: 1px solid #ddd; padding: 10px;">ناوی کاڵا بە گشتی</th>
-                            <th style="border: 1px solid #ddd; padding: 10px;">بەروار</th>
-                            <th style="border: 1px solid #ddd; padding: 10px;">نرخ</th>
-                            <th style="border: 1px solid #ddd; padding: 10px;">ناوی ئۆفیس</th>
-                            <th style="border: 1px solid #ddd; padding: 10px;" class="no-print">وەصڵ</th>
+                            <th style="border: 1px solid #ddd; padding: 10px;" id="thNo">ژ.</th>
+                            <th style="border: 1px solid #ddd; padding: 10px;" id="thStore">ناوی فرۆشگا / شوێن</th>
+                            <th style="border: 1px solid #ddd; padding: 10px;" id="thItem">ناوی کاڵا بە گشتی</th>
+                            <th style="border: 1px solid #ddd; padding: 10px;" id="thDate">بەروار</th>
+                            <th style="border: 1px solid #ddd; padding: 10px;" id="thPrice">نرخ</th>
+                            <th style="border: 1px solid #ddd; padding: 10px;" id="thOffice">ناوی ئۆفیس</th>
+                            <th style="border: 1px solid #ddd; padding: 10px;" class="no-print" id="thReceipt">وەصڵ</th>
                             <th id="finActionHeader" class="no-print admin-only" style="border: 1px solid #ddd; padding: 10px; display:none;">کردار</th>
                         </tr>
                     </thead>
@@ -168,7 +169,7 @@
         </div>
 
         <div class="dashboard-comments">
-            <h2>سەرنج و تێبینییە گشتییەکان</h2>
+            <h2 id="txtCommentsTitle">سەرنج و تێبینییە گشتییەکان</h2>
             <div id="globalCommentList" style="max-height: 250px; overflow-y: auto; margin-bottom: 15px; border-bottom: 1px solid #ccc; padding-bottom: 10px;"></div>
             <div class="add-comment no-print">
                 <input type="text" id="globalCommentName" placeholder="ناوی تەواو" style="padding: 10px; margin-bottom: 10px; width: 100%; box-sizing: border-box;">
@@ -187,16 +188,16 @@
             
             <h2 id="modalName">ناوی کارمەند</h2>
             <p id="modalPosition" class="position">پۆست</p>
-            <h3 class="points-display">کۆی خاڵەکان: <span id="modalPoints">0</span></h3>
+            <h3 class="points-display"><span id="txtTotalPoints">کۆی خاڵەکان</span>: <span id="modalPoints">0</span></h3>
 
             <div id="adminControls" class="admin-only-flex no-print" style="display: none; justify-content: center; align-items: center; gap: 15px;">
                 <button class="point-btn plus">+</button>
-                <span style="font-size: 16px; font-weight: bold;">(٠ بۆ ١٠)</span>
+                <span style="font-size: 16px; font-weight: bold;" id="txtPointRange">(٠ بۆ ١٠)</span>
                 <button class="point-btn minus">-</button>
             </div>
 
             <div id="notesDisplaySection" style="margin-top: 20px; border-top: 2px dashed #e67e22; padding-top: 15px;">
-                <h3 style="color: #e67e22;">📝 تێبینی و کارەکان</h3>
+                <h3 id="txtNotesTitle" style="color: #e67e22;">📝 تێبینی و کارەکان</h3>
                 <div id="staffNotesList" style="max-height: 250px; overflow-y: auto; margin-bottom: 10px; font-size: 14px;"></div>
                 
                 <div id="notesAddSection" class="admin-only no-print" style="display: none; margin-top: 10px;">
@@ -229,6 +230,181 @@
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
       const auth = getAuth(app);
+
+      // سیستەمی زمان (کوردی و ئینگلیزی)
+      let currentLang = localStorage.getItem('siteLang') || 'ku';
+
+      const translations = {
+          ku: {
+              pageTitle: "سیستەمی بەڕێوەبردنی ئۆفیس مەسیف",
+              headerTitle: "سیستەمی بەڕێوەبردنی ئۆفیس مەسیف",
+              supervisor: "سەرپەرشتیار ڕێباز ئەحمەد",
+              loginBtn: "چوونەژوورەوە",
+              logoutBtn: "چوونەدەرەوە",
+              loginTitle: "چوونەژوورەوە",
+              emailPlaceholder: "ئیمەیڵ",
+              passPlaceholder: "پاسوۆرد",
+              submitLogin: "لۆگین",
+              loginError: "هەڵە: تەنها ئادمین و بەڕێوەبەری بەشی دارایی دەتوانن بچنە ژوورەوە",
+              addStaffTitle: "زیادکردنی کارمەندی نوێ",
+              namePlaceholder: "ناوی کارمەند",
+              scanner: "سکانەر",
+              techSup: "تەکنیکاڵ سەپۆرتەر",
+              supporter: "سەپۆرتەر",
+              addBtn: "زیادکردن",
+              financeBtn: "📊 بەشی دارایی",
+              financeTitle: "بەشی دارایی و وەصڵەکان",
+              printBtn: "🖨️ پرینت / PDF",
+              addReceipt: "زیادکردنی وەصڵی نوێ",
+              storePlaceholder: "ناوی فرۆشگا / شوێن",
+              itemPlaceholder: "ناوی کاڵا بە گشتی",
+              datePlaceholder: "بەروار",
+              pricePlaceholder: "نرخ (بە دینار)",
+              officePlaceholder: "ناوی ئۆفیس",
+              imageLabel: "وێنە:",
+              saveBtn: "پاشەکەوتکردن",
+              thNo: "ژ.",
+              thStore: "ناوی فرۆشگا / شوێن",
+              thItem: "ناوی کاڵا بە گشتی",
+              thDate: "بەروار",
+              thPrice: "نرخ",
+              thOffice: "ناوی ئۆفیس",
+              thReceipt: "وەصڵ",
+              thAction: "کردار",
+              totalSum: "کۆی گشتی:",
+              commentsTitle: "سەرنج و تێبینییە گشتییەکان",
+              commentNamePlaceholder: "ناوی تەواو",
+              commentTextPlaceholder: "سەرنجەکەت لەسەر سیستمەکە یان ئۆفیس لێرە بنووسە...",
+              sendCommentBtn: "ناردنی سەرنج",
+              totalPoints: "کۆی خاڵەکان",
+              pointRange: "(٠ بۆ ١٠)",
+              notesTitle: "📝 تێبینی و کارەکان",
+              noteDatePlaceholder: "بەروار",
+              noteTextPlaceholder: "تێبینی ئەمڕۆ بنووسە...",
+              saveNoteBtn: "تۆمارکردنی تێبینی",
+              editBtn: "دەستکاری",
+              deleteBtn: "سڕینەوە",
+              confirmDeleteStaff: "دڵنیایت لە سڕینەوەی ئەم کارمەندە؟",
+              confirmDeleteNote: "دڵنیایت لە سڕینەوەی ئەم تێبینییە؟",
+              confirmDeleteComment: "دڵنیایت لە سڕینەوەی ئەم سەرنجە؟",
+              confirmDeleteFinance: "دڵنیایت لە سڕینەوەی ئەم وەصڵە؟"
+          },
+          en: {
+              pageTitle: "Massif Office Management System",
+              headerTitle: "Massif Office Management System",
+              supervisor: "Supervisor Rebaz Ahmed",
+              loginBtn: "Login",
+              logoutBtn: "Logout",
+              loginTitle: "Login",
+              emailPlaceholder: "Email",
+              passPlaceholder: "Password",
+              submitLogin: "Login",
+              loginError: "Error: Only admin and finance manager can login",
+              addStaffTitle: "Add New Staff",
+              namePlaceholder: "Staff Name",
+              scanner: "Scanner",
+              techSup: "Technical Supporter",
+              supporter: "Supporter",
+              addBtn: "Add",
+              financeBtn: "📊 Finance Section",
+              financeTitle: "Finance & Receipts",
+              printBtn: "🖨️ Print / PDF",
+              addReceipt: "Add New Receipt",
+              storePlaceholder: "Store / Location Name",
+              itemPlaceholder: "Item Description",
+              datePlaceholder: "Date",
+              pricePlaceholder: "Price (IQD)",
+              officePlaceholder: "Office Name",
+              imageLabel: "Image:",
+              saveBtn: "Save",
+              thNo: "#",
+              thStore: "Store / Location",
+              thItem: "Item",
+              thDate: "Date",
+              thPrice: "Price",
+              thOffice: "Office",
+              thReceipt: "Receipt",
+              thAction: "Action",
+              totalSum: "Total Sum:",
+              commentsTitle: "General Feedback & Comments",
+              commentNamePlaceholder: "Full Name",
+              commentTextPlaceholder: "Write your feedback about the system or office here...",
+              sendCommentBtn: "Send Feedback",
+              totalPoints: "Total Points",
+              pointRange: "(0 to 10)",
+              notesTitle: "📝 Notes & Tasks",
+              noteDatePlaceholder: "Date",
+              noteTextPlaceholder: "Write today's note...",
+              saveNoteBtn: "Save Note",
+              editBtn: "Edit",
+              deleteBtn: "Delete",
+              confirmDeleteStaff: "Are you sure you want to delete this staff member?",
+              confirmDeleteNote: "Are you sure you want to delete this note?",
+              confirmDeleteComment: "Are you sure you want to delete this comment?",
+              confirmDeleteFinance: "Are you sure you want to delete this receipt?"
+          }
+      };
+
+      function updateLanguageUI() {
+          const t = translations[currentLang];
+          document.getElementById('htmlRoot').setAttribute('lang', currentLang);
+          document.getElementById('htmlRoot').setAttribute('dir', currentLang === 'ku' ? 'rtl' : 'ltr');
+          document.getElementById('pageTitle').innerText = t.pageTitle;
+          document.getElementById('txtHeaderTitle').innerText = t.headerTitle;
+          document.getElementById('txtSupervisor').innerText = t.supervisor;
+          document.getElementById('txtLoginTitle').innerText = t.loginTitle;
+          document.getElementById('emailInput').placeholder = t.emailPlaceholder;
+          document.getElementById('passwordInput').placeholder = t.passPlaceholder;
+          document.getElementById('submitLogin').innerText = t.submitLogin;
+          document.getElementById('txtAddStaffTitle').innerText = t.addStaffTitle;
+          document.getElementById('newName').placeholder = t.namePlaceholder;
+          document.getElementById('optScanner').innerText = t.scanner;
+          document.getElementById('optTech').innerText = t.techSup;
+          document.getElementById('optSupporter').innerText = t.supporter;
+          document.getElementById('addStaffBtn').innerText = t.addBtn;
+          document.getElementById('financeSectionBtn').innerText = t.financeBtn;
+          document.getElementById('txtFinanceTitle').innerText = t.financeTitle;
+          document.getElementById('txtAddReceipt').innerText = t.addReceipt;
+          document.getElementById('finStore').placeholder = t.storePlaceholder;
+          document.getElementById('finItem').placeholder = t.itemPlaceholder;
+          document.getElementById('finDate').placeholder = t.datePlaceholder;
+          document.getElementById('finPrice').placeholder = t.pricePlaceholder;
+          document.getElementById('finOffice').placeholder = t.officePlaceholder;
+          document.getElementById('txtImageLabel').innerText = t.imageLabel;
+          document.getElementById('addFinanceBtn').innerText = t.saveBtn;
+          document.getElementById('thNo').innerText = t.thNo;
+          document.getElementById('thStore').innerText = t.thStore;
+          document.getElementById('thItem').innerText = t.thItem;
+          document.getElementById('thDate').innerText = t.thDate;
+          document.getElementById('thPrice').innerText = t.thPrice;
+          document.getElementById('thOffice').innerText = t.thOffice;
+          document.getElementById('thReceipt').innerText = t.thReceipt;
+          document.getElementById('txtCommentsTitle').innerText = t.commentsTitle;
+          document.getElementById('globalCommentName').placeholder = t.commentNamePlaceholder;
+          document.getElementById('globalCommentText').placeholder = t.commentTextPlaceholder;
+          document.getElementById('addGlobalBtn').innerText = t.sendCommentBtn;
+          document.getElementById('txtTotalPoints').innerText = t.totalPoints;
+          document.getElementById('txtPointRange').innerText = t.pointRange;
+          document.getElementById('txtNotesTitle').innerText = t.notesTitle;
+          document.getElementById('staffNoteDate').placeholder = t.noteDatePlaceholder;
+          document.getElementById('staffNoteText').placeholder = t.noteTextPlaceholder;
+          document.getElementById('addStaffNoteBtn').innerText = t.saveNoteBtn;
+          
+          document.getElementById('langToggle').innerText = currentLang === 'ku' ? 'EN' : 'کوردی';
+          
+          const loginBtn = document.getElementById('loginBtn');
+          if(!auth.currentUser) loginBtn.innerText = t.loginBtn;
+          else loginBtn.innerText = t.logoutBtn;
+      }
+
+      const langToggle = document.getElementById('langToggle');
+      langToggle.onclick = () => {
+          currentLang = currentLang === 'ku' ? 'en' : 'ku';
+          localStorage.setItem('siteLang', currentLang);
+          updateLanguageUI();
+          loadStaff();
+          loadGlobalComments();
+      };
 
       window.printFinanceSection = function() {
           document.body.classList.add('print-finance-mode');
@@ -287,13 +463,14 @@
               })
               .catch((error) => {
                   document.getElementById('loginError').style.display = 'block';
-                  document.getElementById('loginError').innerText = "هەڵە: تەنها ئادمین و بەڕێوەبەری بەشی دارایی دەتوانن بچنە ژوورەوە";
+                  document.getElementById('loginError').innerText = translations[currentLang].loginError;
               });
       };
 
       onAuthStateChanged(auth, (user) => {
+          const t = translations[currentLang];
           if (user) {
-              loginBtn.innerText = "چوونەدەرەوە";
+              loginBtn.innerText = t.logoutBtn;
               loginBtn.style.background = "#e74c3c";
               
               if (user.email.toLowerCase() === 'finance@massif.com') {
@@ -316,7 +493,7 @@
                   document.getElementById('finActionHeader').style.display = 'none';
               }
           } else {
-              loginBtn.innerText = "چوونەژوورەوە";
+              loginBtn.innerText = t.loginBtn;
               loginBtn.style.background = "#e74c3c"; 
               document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
               document.querySelectorAll('.admin-only-flex').forEach(el => el.style.display = 'none');
@@ -333,9 +510,9 @@
       
       financeSectionBtn.onclick = () => {
           if (!auth.currentUser) {
-              alert("تکایە بۆ بینینی بەشی دارایی، سەرەتا پێویستە لۆگین بکەیت.");
+              alert(currentLang === 'ku' ? "تکایە بۆ بینینی بەشی دارایی، سەرەتا پێویستە لۆگین بکەیت." : "Please login first to view the finance section.");
               document.getElementById('loginError').style.display = 'block';
-              document.getElementById('loginError').innerText = "هەڵە: تەنها ئادمین و بەڕێوەبەری بەشی دارایی دەتوانن بچنە ژوورەوە";
+              document.getElementById('loginError').innerText = translations[currentLang].loginError;
               loginModal.style.display = 'block';
               return;
           }
@@ -357,7 +534,7 @@
           downloadBtn.onclick = () => {
               const a = document.createElement('a');
               a.href = imgSrc;
-              a.download = 'وەصڵ_' + new Date().getTime() + '.jpg';
+              a.download = 'Receipt_' + new Date().getTime() + '.jpg';
               document.body.appendChild(a);
               a.click();
               document.body.removeChild(a);
@@ -368,7 +545,7 @@
 
       async function loadFinanceData() {
           const tbody = document.getElementById('financeTableBody');
-          tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;">چاوەڕێ بکە...</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;">...</td></tr>';
           let totalSum = 0;
           
           const querySnapshot = await getDocs(collection(db, "finance"));
@@ -380,9 +557,9 @@
               const priceNum = Number(data.price) || 0;
               totalSum += priceNum;
               
-              let actionCell = isAdmin ? `<button class="no-print" onclick="deleteFinance('${docSnap.id}')" style="background:#e74c3c; color:white; border:none; padding:4px 8px; border-radius:3px; cursor:pointer;">سڕینەوە</button>` : '';
+              let actionCell = isAdmin ? `<button class="no-print" onclick="deleteFinance('${docSnap.id}')" style="background:#e74c3c; color:white; border:none; padding:4px 8px; border-radius:3px; cursor:pointer;">${translations[currentLang].deleteBtn}</button>` : '';
               
-              let imageCell = data.image ? `<img src="${data.image}" style="max-height:40px; cursor:pointer; border-radius:3px; border:1px solid #ccc;" onclick="viewReceipt('${data.image}')" title="بینینی وێنەکە">` : '<span style="color:#999; font-size:12px;">نییە</span>';
+              let imageCell = data.image ? `<img src="${data.image}" style="max-height:40px; cursor:pointer; border-radius:3px; border:1px solid #ccc;" onclick="viewReceipt('${data.image}')">` : '-';
 
               tbody.innerHTML += `
               <tr>
@@ -390,7 +567,7 @@
                   <td style="border: 1px solid #ddd; padding: 10px;">${data.store}</td>
                   <td style="border: 1px solid #ddd; padding: 10px;">${data.item}</td>
                   <td style="border: 1px solid #ddd; padding: 10px;" dir="ltr">${data.date}</td>
-                  <td style="border: 1px solid #ddd; padding: 10px; color:#27ae60; font-weight:bold;" dir="ltr">${priceNum.toLocaleString()} دينار</td>
+                  <td style="border: 1px solid #ddd; padding: 10px; color:#27ae60; font-weight:bold;" dir="ltr">${priceNum.toLocaleString()} IQD</td>
                   <td style="border: 1px solid #ddd; padding: 10px;">${data.office}</td>
                   <td style="border: 1px solid #ddd; padding: 10px; text-align:center;" class="no-print">${imageCell}</td>
                   ${isAdmin ? `<td class="no-print" style="border: 1px solid #ddd; padding: 10px; text-align:center;">${actionCell}</td>` : ''}
@@ -399,7 +576,7 @@
               index++;
           });
           
-          document.getElementById('totalFinanceSum').innerText = `کۆی گشتی: ${totalSum.toLocaleString()} دینار`;
+          document.getElementById('totalFinanceSum').innerText = `${translations[currentLang].totalSum} ${totalSum.toLocaleString()} IQD`;
       }
 
       document.getElementById('addFinanceBtn').onclick = async () => {
@@ -411,11 +588,11 @@
           const fileInput = document.getElementById('finImage');
           
           if (!store || !item || !price) {
-              alert("تکایە لانی کەم ناوی فرۆشگا، کاڵا و نرخەکەی بنووسە.");
+              alert(currentLang === 'ku' ? "تکایە لانی کەم ناوی فرۆشگا، کاڵا و نرخەکەی بنووسە." : "Please fill store, item, and price.");
               return;
           }
 
-          document.getElementById('addFinanceBtn').innerText = 'چاوەڕێ بکە...';
+          document.getElementById('addFinanceBtn').innerText = '...';
 
           const saveData = async (base64Image) => {
               await addDoc(collection(db, "finance"), {
@@ -434,7 +611,7 @@
               document.getElementById('finPrice').value = '';
               document.getElementById('finOffice').value = '';
               document.getElementById('finImage').value = '';
-              document.getElementById('addFinanceBtn').innerText = 'پاشەکەوتکردن';
+              document.getElementById('addFinanceBtn').innerText = translations[currentLang].saveBtn;
               loadFinanceData();
           };
 
@@ -468,7 +645,7 @@
       };
 
       window.deleteFinance = async function(id) {
-          if(confirm("دڵنیایت لە سڕینەوەی ئەم وەصڵە؟")) {
+          if(confirm(translations[currentLang].confirmDeleteFinance)) {
               await deleteDoc(doc(db, "finance", id));
               loadFinanceData();
           }
@@ -499,7 +676,7 @@
               return orderA - orderB;
           });
 
-          staffArray.forEach((data) => {
+          staffArray.reverse().forEach((data) => {
               const card = document.createElement('div');
               let colorClass = '';
               
@@ -511,11 +688,11 @@
               card.innerHTML = `
                   <h3>${data.name}</h3>
                   <p>${data.position}</p>
-                  <p class="points">خاڵەکان: <span id="card-points-${data.id}">${data.points}</span></p>
+                  <p class="points">${translations[currentLang].totalPoints}: <span id="card-points-${data.id}">${data.points}</span></p>
                   
                   <div class="admin-only no-print" style="display:${isAdmin ? 'flex' : 'none'}; gap: 5px; margin-top: 10px;">
-                      <button onclick="editStaff(event, '${data.id}', '${data.name}', '${data.position}')" style="background:#f39c12; color:white; border:none; padding:6px; border-radius:3px; flex:1; cursor:pointer;">دەستکاری</button>
-                      <button onclick="deleteStaff(event, '${data.id}')" style="background:#e74c3c; color:white; border:none; padding:6px; border-radius:3px; flex:1; cursor:pointer;">سڕینەوە</button>
+                      <button onclick="editStaff(event, '${data.id}', '${data.name}', '${data.position}')" style="background:#f39c12; color:white; border:none; padding:6px; border-radius:3px; flex:1; cursor:pointer;">${translations[currentLang].editBtn}</button>
+                      <button onclick="deleteStaff(event, '${data.id}')" style="background:#e74c3c; color:white; border:none; padding:6px; border-radius:3px; flex:1; cursor:pointer;">${translations[currentLang].deleteBtn}</button>
                   </div>
               `;
               card.onclick = () => openModal(data.id, data.name, data.position, data.points);
@@ -535,7 +712,7 @@
 
       window.deleteStaff = async function(event, id) {
           event.stopPropagation(); 
-          if(confirm("دڵنیایت لە سڕینەوەی ئەم کارمەندە؟")) {
+          if(confirm(translations[currentLang].confirmDeleteStaff)) {
               await deleteDoc(doc(db, "staff", id));
               loadStaff();
           }
@@ -543,10 +720,10 @@
 
       window.editStaff = async function(event, id, currentName, currentPosition) {
           event.stopPropagation();
-          let newName = prompt("ناوی نوێی کارمەند بنووسە:", currentName);
+          let newName = prompt(currentLang === 'ku' ? "ناوی نوێی کارمەند بنووسە:" : "Enter new staff name:", currentName);
           if (newName === null) return;
           
-          let newPosition = prompt("پۆستی نوێی کارمەند بنووسە (سکانەر، تەکنیکاڵ سەپۆرتەر، سەپۆرتەر):", currentPosition);
+          let newPosition = prompt(currentLang === 'ku' ? "پۆستی نوێی کارمەند بنووسە (سکانەر، تەکنیکاڵ سەپۆرتەر، سەپۆرتەر):" : "Enter new position:", currentPosition);
           if (newPosition === null) return;
           
           if (newName.trim() !== "") {
@@ -589,11 +766,11 @@
 
       window.loadStaffNotes = async function() {
           const notesList = document.getElementById('staffNotesList');
-          notesList.innerHTML = '<i>چاوەڕێ بکە...</i>';
+          notesList.innerHTML = '<i>...</i>';
           const querySnapshot = await getDocs(collection(db, `staff/${currentStaffId}/notes`));
           notesList.innerHTML = '';
           if(querySnapshot.empty) {
-              notesList.innerHTML = '<p style="color:#999; margin:0;">هیچ تێبینی و کارێکی بوونی نییە.</p>';
+              notesList.innerHTML = `<p style="color:#999; margin:0;">${currentLang === 'ku' ? 'هیچ تێبینی و کارێکی بوونی نییە.' : 'No notes available.'}</p>`;
           } else {
               let noteIndex = 1;
               querySnapshot.forEach((docSnap) => {
@@ -602,8 +779,8 @@
                   
                   const adminButtons = isAdmin ? `
                       <div style="margin-top: 8px;" class="no-print">
-                          <button onclick="editNote('${docSnap.id}', '${safeText}')" style="background:#f39c12; color:white; border:none; padding:4px 10px; border-radius:3px; cursor:pointer; font-size:12px;">دەستکاری</button>
-                          <button onclick="deleteNote('${docSnap.id}')" style="background:#e74c3c; color:white; border:none; padding:4px 10px; border-radius:3px; cursor:pointer; font-size:12px;">سڕینەوە</button>
+                          <button onclick="editNote('${docSnap.id}', '${safeText}')" style="background:#f39c12; color:white; border:none; padding:4px 10px; border-radius:3px; cursor:pointer; font-size:12px;">${translations[currentLang].editBtn}</button>
+                          <button onclick="deleteNote('${docSnap.id}')" style="background:#e74c3c; color:white; border:none; padding:4px 10px; border-radius:3px; cursor:pointer; font-size:12px;">${translations[currentLang].deleteBtn}</button>
                       </div>
                   ` : '';
 
@@ -633,14 +810,14 @@
       };
 
       window.deleteNote = async function(noteId) {
-          if(confirm("دڵنیایت لە سڕینەوەی ئەم تێبینییە؟")) {
+          if(confirm(translations[currentLang].confirmDeleteNote)) {
               await deleteDoc(doc(db, `staff/${currentStaffId}/notes`, noteId));
               loadStaffNotes();
           }
       };
 
       window.editNote = async function(noteId, oldText) {
-          let newText = prompt("دەستکاری تێبینییەکە بکە:", oldText);
+          let newText = prompt(currentLang === 'ku' ? "دەستکاری تێبینییەکە بکە:" : "Edit note:", oldText);
           if(newText !== null && newText.trim() !== "") {
               await updateDoc(doc(db, `staff/${currentStaffId}/notes`, noteId), { text: newText.trim() });
               loadStaffNotes();
@@ -660,7 +837,7 @@
 
           commentList.innerHTML = '';
           commentsArray.forEach((comment) => {
-              const deleteBtn = isAdmin ? `<button onclick="deleteGlobalComment('${comment.id}')" style="background:#e74c3c; color:white; border:none; padding:4px 10px; border-radius:3px; cursor:pointer; font-size:12px; margin-right:auto;">سڕینەوە</button>` : '';
+              const deleteBtn = isAdmin ? `<button onclick="deleteGlobalComment('${comment.id}')" style="background:#e74c3c; color:white; border:none; padding:4px 10px; border-radius:3px; cursor:pointer; font-size:12px; margin-right:auto;">${translations[currentLang].deleteBtn}</button>` : '';
               
               const commentDate = comment.date ? `<span style="font-size:12px; color:#95a5a6; margin-right:15px; font-weight:normal;">🕒 ${comment.date}</span>` : '';
 
@@ -692,12 +869,12 @@
               document.getElementById('globalCommentText').value = '';
               loadGlobalComments();
           } else {
-              alert("تکایە ناو و سەرنجەکەت پڕبکەرەوە.");
+              alert(currentLang === 'ku' ? "تکایە ناو و سەرنجەکەت پڕبکەرەوە." : "Please fill name and feedback.");
           }
       };
 
       window.deleteGlobalComment = async function(id) {
-          if(confirm("دڵنیایت لە سڕینەوەی ئەم سەرنجە؟")) {
+          if(confirm(translations[currentLang].confirmDeleteComment)) {
               await deleteDoc(doc(db, "global_comments", id));
               loadGlobalComments();
           }
@@ -710,6 +887,7 @@
           if (event.target === document.getElementById('receiptModal')) document.getElementById('receiptModal').style.display = 'none';
       };
 
+      updateLanguageUI();
       loadStaff();
       loadGlobalComments();
     </script>
